@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+require 'bundler/setup'
+require_relative '../lib/subdomain_scanner'
+
+unless ARGV[0]
+  puts "Usage: ./bin/scan <domain>"
+  exit(1)
+end
+
+domain = ARGV[0].gsub(/https?:\/\//, '')
+scanner = SubdomainScanner.new(domain)
+scanner.run
